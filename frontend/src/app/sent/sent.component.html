@@ -1,0 +1,20 @@
+<table class="table" style="width:100%;">
+  <thead>
+    <tr>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      <th scope="col">Body</th>
+      <th scope="col">Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of sentmail">
+      <th scope="row">{{i.from}}</th>
+      <td>{{i.to}}</td>
+      <td>{{i.emailBody}}</td>
+      <td>{{i.creation_dt}}</td>
+      <td>Actions</td>
+    </tr>
+</tbody>
+</table>

@@ -1,0 +1,47 @@
+
+
+<!-- <div class="row" style="margin-top:40px; background-color:#eff0f2;
+-webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);
+-moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);
+box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);"> -->
+  <!-- <div class="col-sm-12" style="text-align:center;">
+    Register
+  </div> -->
+<!-- 
+  <div class="col-sm-12">
+      <div class="jumbotron">
+          <h1 class="display-4">Hello, {{username}}!</h1>
+          <p class="lead">You have successfully logged in to our system.</p>
+          <hr class="my-4">
+          <p>Thanks to bootstrap for making wonderful UI to make development fast.</p>
+          <p class="lead" style="color:white;">
+            <a class="btn btn-primary btn-lg" role="button" (click)="logout()">Log Out</a>
+          </p>
+        </div>
+  </div>
+</div> -->
+
+ <a class="btn btn-success btn-sm" style="
+    margin-top: -80px;
+    margin-left: 140%;
+"role="button" (click)="logout()">Log Out</a>
+<form #f ="ngForm" (ngSubmit)="createMail()" >
+
+      <div class="text-center  mb-4">
+        <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Compose Mail</h1>
+        
+      </div>
+  <div class="form-group">
+    
+    <input type="email" class="form-control" id="from" name="from" placeholder="From"  [(ngModel)]="mailDetails.from">
+  </div>
+  <div class="form-group">
+    <input type="email" class="form-control" id="to" name="to" placeholder="To"  [(ngModel)]="mailDetails.to">
+  </div>
+
+  <div class="form-group">
+    <textarea class="form-control" id="email" name="email" rows="3"  [(ngModel)]="mailDetails.emailBody"></textarea>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Send Mail</button>
+</form>
