@@ -36,8 +36,8 @@ var nodemailer = require('nodemailer');
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-            user: 'sdmasroor0290@gmail.com', // generated ethereal user
-            pass: 'adhoreuuu' // generated ethereal password
+            user: 'abc@gmail.com', // generated ethereal user
+            pass: 'abcde' // generated ethereal password
         },
         tls:{
         	rejectUnauthorized:false
