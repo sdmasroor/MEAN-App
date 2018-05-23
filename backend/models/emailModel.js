@@ -20,7 +20,7 @@ var createMail = new Schema({
 		type: String,
 		required: true
 	},
-	messageid:{type:String, require:false},
+	//messageid:{type:String, require:false},
 	messageDelivered:{type:Boolean, require:false},
     creation_dt:{type:Date, require:true}
 			

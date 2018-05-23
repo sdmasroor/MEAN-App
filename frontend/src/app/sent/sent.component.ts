@@ -12,8 +12,8 @@ sentmail:any={};
   constructor(private _user:UserService, private _router:Router) { }
     getSentMails()
 	{
-	
-	this._user.getSentMails()
+	let uid = {'uid':localStorage.getItem('userId')};
+	this._user.getSentMails(uid)
 	.subscribe((data)=>{
 	
 	this.sentmail = data;

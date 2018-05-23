@@ -11,6 +11,7 @@ export class UserhomeComponent implements OnInit {
   mailDetails:any={};
   username:String='';
   msg:string='';
+  email:any={};
   constructor(private _user:UserService, private _router:Router) { 
     this._user.user()
     .subscribe(
@@ -23,6 +24,7 @@ export class UserhomeComponent implements OnInit {
     this.username = data.username;
   }
   ngOnInit() {
+  this.getuserdetails();
   }
 
   logout(){
@@ -33,7 +35,18 @@ export class UserhomeComponent implements OnInit {
       error=>console.error(error)
     )
   }
+  getuserdetails(){
+ 
+ let uid = {'uid':localStorage.getItem('userId')};
+
+  this._user.getuserdetails(uid)
+    .subscribe((data)=>{
+    this.mailDetails.from = data[0].email;
+    });
+
+  }
    createMail()
+  
   {
     console.log(this.mailDetails);
     this._user.createMail(this.mailDetails)

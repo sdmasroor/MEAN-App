@@ -48,9 +48,18 @@ export class UserService {
     });
 
   }
-    getSentMails(){
+    getSentMails(uid){
+console.log(uid);
+   return this.http.post('http://127.0.0.1:5000/emails/getSentMails',uid,{
+      observe:'body',
+      withCredentials:true,
+      headers:new HttpHeaders().append('Content-Type','application/json')
+    });
+  }
 
-   return this.http.get('http://127.0.0.1:5000/emails/getSentMails',{
+    getuserdetails(userId){
+console.log(userId);
+   return this.http.post('http://127.0.0.1:5000/users/getuserdetails',userId,{
       observe:'body',
       withCredentials:true,
       headers:new HttpHeaders().append('Content-Type','application/json')

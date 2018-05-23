@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var passport = require('passport');
+const {ObjectId} = require('mongodb'); 
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
 //   res.send('respond with a resource');
@@ -37,7 +38,7 @@ router.post('/login',function(req,res,next){
     if (!user) { return res.status(501).json(info); }
     req.logIn(user, function(err) {
       if (err) { return res.status(501).json(err); }
-      return res.status(200).json({message:'Login Success'});
+      return res.status(200).json(user);
     });
   })(req, res, next);
 });
@@ -55,5 +56,23 @@ function isValidUser(req,res,next){
   if(req.isAuthenticated()) next();
   else return res.status(401).json({message:'Unauthorized Request'});
 }
+router.post('/getuserdetails',(req,res,next)=>{
+
+ let query = { _id : ObjectId(req.body.uid)};
+// console.log(ObjectId(req.body.uid));
+  User.find(query,(err,item)=>{
+    if(err){
+      res.json(query);
+
+    }
+    else{
+      
+        res.json(item);
+      
+      
+    }
+  });
+
+});
 
 module.exports = router;
