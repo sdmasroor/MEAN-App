@@ -12,17 +12,28 @@ var createMail = new Schema({
 		type: String,
 		required: true
 	},
+	fromId:{
 
-	
-
+		type: String,
+		required: true
+	},
 	emailBody:{
 
 		type: String,
 		required: true
 	},
 	//messageid:{type:String, require:false},
-	messageDelivered:{type:Boolean, require:false},
-    creation_dt:{type:Date, require:true}
+	messageDelivered:{
+
+		type:Boolean,
+		 require:false
+
+		},
+    creation_dt:{
+    	
+    	type:Date, 
+    	require:true
+    }
 			
 });
 const sendMails = module.exports = mongoose.model('sendMails',createMail);

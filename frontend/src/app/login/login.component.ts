@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
+import { SessionService } from '../session.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
     email:new FormControl(null,[Validators.email,Validators.required]),
     password:new FormControl(null, Validators.required)
   });
-  constructor(private _router:Router, private _user:UserService) { }
+  constructor(private _router:Router, private _user:UserService,private SessionService:SessionService) { }
 
   ngOnInit() {
   }
@@ -32,7 +33,12 @@ export class LoginComponent implements OnInit {
     this._user.login(JSON.stringify(this.loginForm.value))
     .subscribe(
       data=>{
-                this._router.navigate(['/sent']);} ,
+         console.log(data);
+         if(data){
+         this.SessionService.setStorage(data);
+         this._router.navigate(['/sent']);
+         }
+         } ,
          error=>console.error(error)
     )
   }

@@ -12,6 +12,8 @@ import {UserService} from './user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { InboxComponent } from './inbox/inbox.component';
 import { SentComponent } from './sent/sent.component';
+import { SessionService } from './session.service';
+import { MessageService } from './message.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import { SentComponent } from './sent/sent.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService,SessionService,MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -19,6 +19,7 @@ var mailer = nodemailer.createTransport(sgTransport(options));
 
 router.post('/create',(req,res,next)=>{
 	let create = new sendMails({
+		fromId: req.body.uid,
 		to : req.body.to,
 		from : req.body.from,
 		emailBody : req.body.emailBody,
@@ -86,7 +87,7 @@ router.post('/create',(req,res,next)=>{
 
 router.post('/getSentMails',(req,res,next)=>{
 
-	var query = { _id : req.body.uid};
+	var query = { fromId : req.body.uid};
 	sendMails.find(query,(err,item)=>{
 		if(err){
 			res.json(err);
